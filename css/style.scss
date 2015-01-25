@@ -1,0 +1,57 @@
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "RobotoDraft", "Roboto", "Helvetica Neue", Helvetica, Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+}
+
+.result {
+  .well {
+    padding: 15px 15px 0;
+    overflow: hidden;
+  }
+  .col-sm-4 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .alert {
+    margin-bottom: 0;
+    &:before{
+      border-top: 80px solid transparent;
+      border-right: 30px solid #ff5722;
+      content: '';
+      left: -30px;
+      width: 0px;
+      height: 0px;
+      top: 0px;
+      position: absolute;
+    }
+    &.alert-danger:before {
+      border-right: 30px solid #f44336;
+    }
+    &.match {
+      h4, & {
+        font-style: italic;
+      }
+    }
+  }
+  h3 {
+    margin: 10px 0 20px;
+  }
+
+  /*.alert.alert-warning:before {
+    border-top: 80px solid transparent;
+    border-right: 30px solid #ff5722;
+    content: '';
+    left: -30px;
+    width: 0px;
+    height: 0px;
+    top: 0px;
+    position: absolute;
+  }*/
+}
+
+
+
+
+
+
+

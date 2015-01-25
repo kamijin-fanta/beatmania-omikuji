@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Beatmaniaおみくじ</title>
+    <link rel="stylesheet" media="screen" href="css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="bootstrap-material/css/material-wfont.css">
+    <link rel="stylesheet" media="screen" href="bootstrap-material/css/ripples.css">
+    <link rel="stylesheet" media="screen" href="css/style.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/linq.min.js"></script>
+    <script src="js/jquery.tmpl.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="bootstrap-material/js/material.js"></script>
+    <script src="bootstrap-material/js/ripples.js"></script>
+    <script src="js/doc.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">おみくじ</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="">Home</a>
+                    <li><a href="#" data-toggle="modal" data-target="#complete-dialog">About</a>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a href="https://twitter.com/kamijin_fanta" target="new">by @kamijin_fanta</a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="progress">
+            <div class="progress-bar progress-bar-info"></div>
+        </div>
+
+        <div class="btn-group btn-group-justified level-select">
+        </div>
+        <template id="level-select-tmpl">
+            <div class="btn-group">
+                <a type="button" class="btn btn-default" data-level="${level}">${level}</a>
+            </div>
+        </template>
+
+        <div class="result">
+
+        </div>
+
+        <template id="result-tmpl">
+            <div class="well">
+                <h3>${msc}　　<small>${artist}　${genre}　${firstVerStr}　${bpmn}-${bpmx}</small></h3>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="alert alert-dismissable alert-info{{if spn==select}} match{{/if}}">
+                            <h4>Level. ${spn}</h4>
+                            Normal / Notes. ${n7}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="alert alert-dismissable alert-warning{{if sph==select}} match{{/if}}">
+                            <h4>Level. ${sph}</h4>
+                            Hyper / Notes. ${h7}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="alert alert-dismissable alert-danger{{if spa==select}} match{{/if}}">
+                            <h4>Level. ${spa}</h4>
+                            Another / Notes.  ${a7}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <div id="complete-dialog" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">About</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>What?</h4>
+                        <p>音楽ゲームのBeatmaniaIIDXの楽曲を選択したレベルから4曲ランダムで表示するものです。データはIIDX22Spadaなので古いです。
+                        <p>読み込み時にすべてのデータを持ってくるので重いです。
+
+                        <h4>Use</h4>
+                        <ul>
+                            <li><a href="https://github.com/twbs/bootstrap">CSS twbs/bootstrap</a>
+                            <li><a href="https://github.com/FezVrasta/bootstrap-material-design">CSS FezVrasta/bootstrap-material-design</a>
+                            <li><a href="http://linqjs.codeplex.com/">JavaScript neue cc/linq.js</a>
+                            <li><a href="https://github.com/Microsoft/TypeScript">Lang Microsoft/TypeScript</a>
+                            <li><a href="https://github.com/sass/sass">Lang sass/sass</a>
+                            <li><a href="https://github.com/sacrifs/iidxsd">Data sacrifs/iidxsd</a>
+                        </ul>
+                        <p>TypeScript+LinqJs=神
+                        <p>tsvをページロード時にajaxで取ってきて、linq.jsで加工して表示しています。
+                    </div>
+                    <div class="modal-footer">
+                        <p>2015-01-17 kamijin_fanta
+                        <p><a href="" id="debug">debug</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $.material.init();
+            $.material.ripples();
+        });
+    </script>
+</body>
+</html>
