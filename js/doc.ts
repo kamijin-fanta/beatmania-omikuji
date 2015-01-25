@@ -97,6 +97,19 @@ module kamijin {
                     .doAction(s => s["select"] = level)
                     .toArray();
                 $("#result-tmpl").tmpl(randselect).appendTo($(".result").empty());
+
+                // twitter
+                var text = Enumerable.from(randselect)
+                    .select((s) => {
+                        return s.msc + "(SP " + [s.spn,s.sph,s.spa].join("/") + ")";
+                    })
+                    .toJoinedString("　");
+                var link = "https://twitter.com/intent/tweet?"
+                    + $.param({
+                        "text": text,
+                        "url": "http://kamijin-fanta.github.io/beatmania-omikuji/"
+                    });
+                $("#tweet").attr("href",link);
             });
 
         var url = "iidxdata.txt";
