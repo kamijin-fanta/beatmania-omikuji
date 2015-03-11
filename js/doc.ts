@@ -60,12 +60,13 @@ module kamijin {
         artist:string;
         japan:string;
         firstVer:string;
-        firstVerStr = () => {
-            return verArray[parseInt(this.firstVer)];
-        }
         verStr = () => {
             return verArray[parseInt(this.ver)];
         }
+    }
+
+    var firstVerStr = (firstVer) => {
+        return verArray[parseInt(firstVer)];
     }
 
     $(() => {
@@ -95,6 +96,7 @@ module kamijin {
                     .take(4)
                     .trace()
                     .doAction(s => s["select"] = level)
+                    .doAction(s => s["firstVerStr"] = firstVerStr(s.firstVer))
                     .toArray();
                 $("#result-tmpl").tmpl(randselect).appendTo($(".result").empty());
 

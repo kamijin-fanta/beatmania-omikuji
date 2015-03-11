@@ -32,15 +32,16 @@ var kamijin;
     var music = (function () {
         function music() {
             var _this = this;
-            this.firstVerStr = function () {
-                return verArray[parseInt(_this.firstVer)];
-            };
             this.verStr = function () {
                 return verArray[parseInt(_this.ver)];
             };
         }
         return music;
     })();
+
+    var firstVerStr = function (firstVer) {
+        return verArray[parseInt(firstVer)];
+    };
 
     $(function () {
         var levelSelect = $(".level-select");
@@ -66,6 +67,8 @@ var kamijin;
                 return d.msc;
             }).take(4).trace().doAction(function (s) {
                 return s["select"] = level;
+            }).doAction(function (s) {
+                return s["firstVerStr"] = firstVerStr(s.firstVer);
             }).toArray();
             $("#result-tmpl").tmpl(randselect).appendTo($(".result").empty());
 
